@@ -1,0 +1,12 @@
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.csprojAssemblyReference.cache
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.csproj.CoreCompileInputs.cache
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.AssemblyInfoInputs.cache
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.AssemblyInfo.cs
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\bin\Debug\netstandard2.0\Technovert.BankApp.Services.deps.json
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\bin\Debug\netstandard2.0\Technovert.BankApp.Services.dll
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\bin\Debug\netstandard2.0\Technovert.BankApp.Services.pdb
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\bin\Debug\netstandard2.0\Technovert.BankApp.Models.dll
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\bin\Debug\netstandard2.0\Technovert.BankApp.Models.pdb
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.csproj.CopyComplete
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.dll
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.pdb

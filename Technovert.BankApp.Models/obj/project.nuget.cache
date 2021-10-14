@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "FDkqKkRrSbcEPzEeWzexGcVBq+nU0W0KpUYwAMuDk62FS8AhXW1uAq2QA2KFo1rFaW73fUs1VCt9aVpMuFxWng==",
+  "success": true,
+  "projectFilePath": "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.Models\\Technovert.BankApp.Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Madhu2\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Madhu2\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
