@@ -16,10 +16,10 @@ namespace Technovert.BankApp.Models
 
         public decimal Amount { get; set; }
 
-        public DateTime On {get; set;}
+        public DateTime On { get; set; }
 
         public decimal Balance { get; set; }
-        
-         
+
+
     }
 }

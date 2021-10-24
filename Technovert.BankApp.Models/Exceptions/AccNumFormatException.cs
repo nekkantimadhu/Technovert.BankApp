@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Technovert.BankApp.Models.Exceptions
 {
-    public static class AccNumFormatException
+    public  class AccNumFormatException : Exception
     {
-        public static string Exception()
+        public AccNumFormatException() : base("Invalid Account Number!!")
         {
-            return "Invalid Account Number";
         }
+
+
+
     }
 }
