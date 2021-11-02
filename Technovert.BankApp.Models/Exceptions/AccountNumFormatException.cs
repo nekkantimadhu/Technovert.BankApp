@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Technovert.BankApp.Models.Exceptions
 {
-    public  class AccNumFormatException : Exception
+    public  class AccountNumFormatException : Exception
     {
-        public AccNumFormatException() : base("Invalid Account Number!!")
+        public AccountNumFormatException() : base("Invalid Account Number!!")
         {
         }
 

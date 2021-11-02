@@ -21,10 +21,10 @@ namespace Technovert.BankApp.CLI
             while (count == 0)
             {
                 Console.WriteLine("Choose option to login as 1.account holder\n 2.bank staff\n 3.Exit");
-                LoginType type = (LoginType)Enum.Parse(typeof(LoginType), System.Console.ReadLine());
+                UserType type = (UserType)Enum.Parse(typeof(UserType), System.Console.ReadLine());
                 switch (type)
                 {
-                    case LoginType.AccountHolder:
+                    case UserType.AccountHolder:
                         Console.WriteLine("Select bank name from available banks");//for loop
                         //for (int i = 0; i < DataStore.Banks.Count; i++) Console.WriteLine(DataStore.Banks[i]+ " ");
                         foreach (Bank i in DataStore.Banks)
@@ -42,23 +42,17 @@ namespace Technovert.BankApp.CLI
                         AccountHolderCLI accountHolderCLI = new AccountHolderCLI();
                         accountHolderCLI.AccHolder(BankName);
                         break;
-                    case LoginType.BankStaff:
-                        Console.WriteLine("Enter the bank name");
-                        BankName = inputsValidation.UserInputString();
-                        BankName = inputsValidation.CommonValidation(BankName, "BankName");
+                    case UserType.BankStaff:
+                        
                         BankService bankService = new BankService();
                         BankStaffCLI bankStaffCLI = new BankStaffCLI();
-                        try
-                        {
-                            bankService.AddBank(BankName);
-                        }
-                        catch (DuplicateBankNameException e)
-                        {
-                            System.Console.WriteLine(e.Message);
-                        }
+
+                        Console.WriteLine("Enter the bank name");
+                        BankName = inputsValidation.UserInputString();
+
                         bankStaffCLI.BankStaffcli(BankName);
                         break;
-                    case LoginType.Exit:
+                    case UserType.Exit:
                         Console.WriteLine("Thank You!!");
                         count = 1;
                         break;

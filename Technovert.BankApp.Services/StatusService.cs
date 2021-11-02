@@ -4,8 +4,8 @@ using System.Text;
 using Technovert.BankApp.Models;
 
 
-namespace Technovert.BankApp.Services.ServiceFiles
-{
+namespace Technovert.BankApp.Services
+{ 
     public class StatusService
     {
         public AccountStatus Status(Account account)
@@ -16,14 +16,14 @@ namespace Technovert.BankApp.Services.ServiceFiles
             TimeSpan diff = current - launchDate;
 
 
-            if (diff.Days < 90)
+            if (diff.Days < 2000)
             {
                 return AccountStatus.Active;
             }
-            else if (diff.Days >= 90 && diff.Days < 1000)
+            /*else if (diff.Days >= 90 && diff.Days < 1000)
             {
                 return AccountStatus.InActive;
-            }
+            }*/
             else
             {
                 return AccountStatus.Closed;

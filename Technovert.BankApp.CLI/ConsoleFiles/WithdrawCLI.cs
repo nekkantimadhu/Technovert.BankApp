@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Technovert.BankApp.Services;
 using Technovert.BankApp.Models;
 using Technovert.BankApp.Models.Exceptions;
-using Technovert.BankApp.Services.ServiceFiles;
+
 
 namespace Technovert.BankApp.CLI.ConsoleFiles
 {
@@ -70,7 +70,7 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                         Console.WriteLine(e.Message);
                     }
                 }
-                catch (AccNotAvailableException e)
+                catch (AccountNotAvailableException e)
                 {
                     System.Console.WriteLine(e.Message);
                 }

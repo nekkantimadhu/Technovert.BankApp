@@ -24,11 +24,11 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
         {
             if (BankName == "")
             {
-                throw new NullValueException(type);
+                throw new NullValueException($"You didn't enter anything, Please Enter a Valid {type}");
             }
             if (BankName.Length < 4)
             {
-                throw new InvalidSizeException(type, 4);
+                throw new InvalidSizeException($"Please Enter {type} of Size atleast 4 characters ");
             }
             return true;
         }
@@ -36,11 +36,11 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
         {
             if (Mobile == "")
             {
-                throw new NullValueException("Mobile");
+                throw new NullValueException("You didn't enter anything, Please Enter a Valid Mobile");
             }
             if (Mobile.Length > 10 || Mobile.Length < 10)
             {
-                throw new InvalidSizeException("Mobile", 10);
+                throw new InvalidSizeException("Please Enter Mobile of Size atleast 10 characters ");
             }
             return true;
         }
@@ -48,7 +48,7 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
         {
             if (Gender == "")
             {
-                throw new NullValueException("Gender");
+                throw new NullValueException("You didn't enter anything, Please Enter a Valid Gender");
             }
             while (Gender != "Male" || Gender != "Female" || Gender != "Other")
             {
@@ -64,7 +64,7 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
         {
             if (AccId == "")
             {
-                throw new NullValueException("AccId");
+                throw new NullValueException("You didn't enter anything, Please Enter a Valid Account Id");
             }
             return true;
         }

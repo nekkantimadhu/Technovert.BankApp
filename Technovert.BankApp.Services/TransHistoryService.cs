@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Technovert.BankApp.Models;
 
-namespace Technovert.BankApp.Services.ServiceFiles
+namespace Technovert.BankApp.Services
 {
     public class TransHistoryService
     {

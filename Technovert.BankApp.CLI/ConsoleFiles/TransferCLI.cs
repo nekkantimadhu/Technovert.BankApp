@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Technovert.BankApp.Services;
 using Technovert.BankApp.Models;
-using Technovert.BankApp.Services.ServiceFiles;
 using Technovert.BankApp.Models.Exceptions;
 
 namespace Technovert.BankApp.CLI.ConsoleFiles
@@ -59,19 +58,26 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                         }
                         catch (AmountFormatException e)
                         {
-                            System.Console.WriteLine(e.Message);
+                            Console.WriteLine(e.Message);
                         }
                     }
                     try
                     {
-                        Console.WriteLine(transferService.Transfer(sourceBank, sourceAccount, amount, destBank, destAccount));
+                        if (transferService.Transfer(sourceBank, sourceAccount, amount, destBank, destAccount))
+                        {
+                            Console.WriteLine("Transfer Successfull");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Transfer Failed");
+                        }
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
                     }
                 }
-                catch (AccNotAvailableException e)
+                catch (AccountNotAvailableException e)
                 {
                     System.Console.WriteLine(e.Message);
                 }

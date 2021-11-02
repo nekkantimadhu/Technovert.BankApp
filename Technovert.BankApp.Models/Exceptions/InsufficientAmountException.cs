@@ -6,7 +6,7 @@ namespace Technovert.BankApp.Models.Exceptions
 {
     public class InsufficientAmountException : Exception
     {
-        public InsufficientAmountException() : base("Available balance is less than required") 
+        public InsufficientAmountException(string s) : base(s) 
         {
         }
     }

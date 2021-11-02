@@ -13,7 +13,8 @@ namespace Technovert.BankApp.Models
         Withdraw,
         Transfer,
         Credit,
-        Debit
+        Debit,
+        Revert
     }
 
 }

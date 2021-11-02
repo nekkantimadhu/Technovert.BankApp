@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Technovert.BankApp.Services.ServiceFiles;
 using Technovert.BankApp.Models;
 using Technovert.BankApp.Models.Exceptions;
+using Technovert.BankApp.Services;
 
 namespace Technovert.BankApp.CLI.ConsoleFiles
 {
@@ -43,7 +43,7 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                         account.Gender = Console.ReadLine();
                     }
                 }
-                catch (AccNotAvailableException e)
+                catch (AccountNotAvailableException e)
                 {
                     System.Console.WriteLine(e.Message);
                 }

@@ -7,7 +7,6 @@ namespace Technovert.BankApp.Models
     public enum AccountStatus
     {
         Active,
-        InActive,
         Closed
             
        

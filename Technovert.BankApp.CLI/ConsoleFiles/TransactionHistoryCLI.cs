@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Technovert.BankApp.Services.ServiceFiles;
 using Technovert.BankApp.Models;
 using Technovert.BankApp.Models.Exceptions;
+using Technovert.BankApp.Services;
 
 namespace Technovert.BankApp.CLI.ConsoleFiles
 {
@@ -39,7 +39,7 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                         Console.WriteLine("Transaction Id " + list[i].TransId + " AccId : " + list[i].UserId + "  Type : " + list[i].Type + "  Amount : " + list[i].Amount + "  Time : " + list[i].On + " Available Balance " + list[i].Balance);
                     }
                 }
-                catch (AccNotAvailableException e)
+                catch (AccountNotAvailableException e)
                 {
                     System.Console.WriteLine(e.Message);
                 }
@@ -75,7 +75,7 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                         System.Console.WriteLine("Transaction Id " + list[i].TransId + " AccId : " + list[i].UserId + "  Type : " + list[i].Type + "  Amount : " + list[i].Amount + "  Time : " + list[i].On + " Available Balance " + list[i].Balance);
                     }
                 }
-                catch (AccNotAvailableException e)
+                catch (AccountNotAvailableException e)
                 {
                     System.Console.WriteLine(e.Message);
                 }

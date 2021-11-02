@@ -14,6 +14,7 @@ namespace Technovert.BankApp.Models
         public string DestinationId { get; set; }
         public string DestinationBankId { get; set; }
 
+
         public decimal Amount { get; set; }
 
         public DateTime On { get; set; }

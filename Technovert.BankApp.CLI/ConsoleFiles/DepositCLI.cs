@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Technovert.BankApp.Services;
 using Technovert.BankApp.Models.Exceptions;
 using Technovert.BankApp.Models;
-using Technovert.BankApp.Services.ServiceFiles;
+
 
 namespace Technovert.BankApp.CLI.ConsoleFiles
 {
@@ -30,12 +30,12 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                 AccId = inputsValidation.CommonValidation(AccId, "AccId");
 
                 Console.WriteLine("Enter your CIF number");
-                string cif = System.Console.ReadLine();
+                string CIF = Console.ReadLine();
                 try
                 {
                     CurrencyCLI currencyCLI = new CurrencyCLI();
                     currencyCLI.Currency();
-                    Account account = validationService.DepositAccountValidity(BankName, AccId, cif);
+                    Account account = validationService.DepositAccountValidity(BankName, AccId, CIF);
 
 
                     while (true)
@@ -50,12 +50,12 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                         }
                         catch (AmountFormatException e)
                         {
-                            System.Console.WriteLine(e.Message);
+                            Console.WriteLine(e.Message);
                         }
                     }
                     try
                     {
-                        if (depositAmount.deposit(bank.BankId, account, amount)) 
+                        if (depositAmount.Deposit(bank.Id, account, amount)) 
                             Console.WriteLine("Deposited amount");
                         else 
                             Console.WriteLine("Depositing money failed");
@@ -65,15 +65,15 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                         Console.WriteLine(e.Message);
                     }
                 }
-                catch (AccNotAvailableException e)
+                catch (AccountNotAvailableException e)
                 {
-                    System.Console.WriteLine(e.Message);
+                    Console.WriteLine(e.Message);
                 }
 
             }
             catch (BankNotAvailableException e)
             {
-                System.Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message);
             }
 
         }

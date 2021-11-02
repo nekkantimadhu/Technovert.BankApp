@@ -6,7 +6,7 @@ namespace Technovert.BankApp.Models.Exceptions
 {
     public class InvalidSizeException : Exception
     {
-        public InvalidSizeException(string type, int val) : base($"Please Enter {type} of Size atleast {val} characters ")
+        public InvalidSizeException(string s) : base(s)
         {
         }
     }

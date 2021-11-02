@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Technovert.BankApp.Models.Exceptions
 {
-    public class AccNotAvailableException : Exception
+    public class AccountNotAvailableException : Exception
     {
-        public AccNotAvailableException() : base("Account not available")
+        public AccountNotAvailableException() : base("Account not available")
         {
         }
     }
