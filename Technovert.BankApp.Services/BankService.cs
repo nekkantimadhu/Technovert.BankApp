@@ -1,5 +1,9 @@
 ﻿using System;
+//using System.Text.Json;
+using Newtonsoft.Json;
 using System.Linq;
+using System.IO;
+//using System.Text.Json.Serialization;
 using Technovert.BankApp.Models;
 using Technovert.BankApp.Models.Exceptions;
 
@@ -22,6 +26,14 @@ namespace Technovert.BankApp.Services
                 CreatedOn = DateTime.Now
 
             };
+
+            string json = JsonConvert.SerializeObject(bank);
+            File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+            /*string json = JsonConvert.SerializeObject(account, Formatting.Indented);
+            TextBlock.Text = json;
+            string json = JsonConvert.Serialize(bank);
+            File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\bank.json", json);*/
+
             DataStore.Banks.Add(bank);//return
             return true;
         }
@@ -37,6 +49,8 @@ namespace Technovert.BankApp.Services
             Account account = bank.AccLists.Single(m => m.AccId == id);
             string transid = "TXN" + bank.Id + account.AccId + DateTime.Now;
             account.TransactionHistory.Add(new Transaction { TransId = transid, UserId = id, Amount = 0, On = DateTime.Now, Type = TransactionType.Create, Balance = 0 });
+            string json = JsonConvert.SerializeObject(account);
+            File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\accountHolder.json", json);
             return account;
         }
 
@@ -50,6 +64,9 @@ namespace Technovert.BankApp.Services
             string id = this.GenerateUserId(name);
             bank.bankStaff.Add(new BankStaff { StaffId = id, StaffName = name, password = Password, Mobile = mobile });
             BankStaff bankStaff= bank.bankStaff.Single(m => m.StaffId == id);
+
+            string json = JsonConvert.SerializeObject(bankStaff);
+            File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\BankStaffAccount.json", json);
             return bankStaff;
         }
         private string GenerateBankId(string BankName)

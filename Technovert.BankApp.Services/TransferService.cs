@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.IO;
 using Technovert.BankApp.Models;
 using Technovert.BankApp.Models.Exceptions;
 
@@ -45,8 +47,12 @@ namespace Technovert.BankApp.Services
 
             string transid = "TXN" + sourceBank.Id + sourceAccount.AccId + DateTime.Now;
             sourceAccount.TransactionHistory.Add(new Transaction { BankId = sourceBank.Id, DestinationBankId = destBank.Id, TransId = transid, UserId = sourceAccount.AccId, DestinationId = destAccount.AccId, Amount = amount, On = DateTime.Now, Type = TransactionType.Debit, Balance = sourceAccount.Balance });
+            string json = JsonConvert.SerializeObject(sourceAccount.TransactionHistory);
+            File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\SrcTransaction.json", json);
             transid = "TXN" + destBank.Id + destAccount.AccId + DateTime.Now;
             destAccount.TransactionHistory.Add(new Transaction { BankId = destBank.Id, DestinationBankId = sourceBank.Id, TransId = transid, UserId = destAccount.AccId, DestinationId = sourceAccount.AccId, Amount = amount, On = DateTime.Now, Type = TransactionType.Credit, Balance = destAccount.Balance });
+            string json = JsonConvert.SerializeObject(destAccount.TransactionHistory);
+            File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\DestTransaction.json", json);
             return true;
         }
     }

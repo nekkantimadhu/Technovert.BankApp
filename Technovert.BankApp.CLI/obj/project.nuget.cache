@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+pDzp6CMUpFveGdHsoIzzX9+Ktys84XH3y/XtQbV2VOQR1VaLYsmov0wV93r01BBK1xI6UfuRI3uh8lRxzrk5A==",
+  "dgSpecHash": "lCDJ1dK+Ic2AfkGBzh92jn0G6jwiVaPGIdtPkqcA1aOU2M2mbDiYNyMvPiRFRXGsWQjGGczD0sY9KjSDlhANCw==",
   "success": true,
   "projectFilePath": "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.CLI\\Technovert.BankApp.CLI.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Madhu2\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
