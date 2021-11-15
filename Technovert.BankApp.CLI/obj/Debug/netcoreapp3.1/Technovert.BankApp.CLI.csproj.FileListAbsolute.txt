@@ -16,3 +16,4 @@ D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\obj\Debug\netcoreapp3.1\Te
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\obj\Debug\netcoreapp3.1\Technovert.BankApp.CLI.dll
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\obj\Debug\netcoreapp3.1\Technovert.BankApp.CLI.pdb
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\obj\Debug\netcoreapp3.1\Technovert.BankApp.CLI.genruntimeconfig.cache
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

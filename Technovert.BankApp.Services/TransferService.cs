@@ -51,7 +51,8 @@ namespace Technovert.BankApp.Services
             File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\SrcTransaction.json", json);
             transid = "TXN" + destBank.Id + destAccount.AccId + DateTime.Now;
             destAccount.TransactionHistory.Add(new Transaction { BankId = destBank.Id, DestinationBankId = sourceBank.Id, TransId = transid, UserId = destAccount.AccId, DestinationId = sourceAccount.AccId, Amount = amount, On = DateTime.Now, Type = TransactionType.Credit, Balance = destAccount.Balance });
-            string json = JsonConvert.SerializeObject(destAccount.TransactionHistory);
+            
+            json = JsonConvert.SerializeObject(destAccount.TransactionHistory);
             File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\DestTransaction.json", json);
             return true;
         }
