@@ -37,7 +37,7 @@ namespace Technovert.BankApp.Services
             }
             if ((amount + charges) > sourceAccount.Balance)
             {
-                throw new Exception("Available amount is " + amount);
+                throw new Exception("Available amount is " + sourceAccount.Balance);
             }
             
             sourceAccount.Balance = sourceAccount.Balance - (amount + charges);
@@ -47,13 +47,14 @@ namespace Technovert.BankApp.Services
 
             string transid = "TXN" + sourceBank.Id + sourceAccount.AccId + DateTime.Now;
             sourceAccount.TransactionHistory.Add(new Transaction { BankId = sourceBank.Id, DestinationBankId = destBank.Id, TransId = transid, UserId = sourceAccount.AccId, DestinationId = destAccount.AccId, Amount = amount, On = DateTime.Now, Type = TransactionType.Debit, Balance = sourceAccount.Balance });
-            string json = JsonConvert.SerializeObject(sourceAccount.TransactionHistory);
-            File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\SrcTransaction.json", json);
+            string json = JsonConvert.SerializeObject(DataStore.Banks);
+            File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
             transid = "TXN" + destBank.Id + destAccount.AccId + DateTime.Now;
             destAccount.TransactionHistory.Add(new Transaction { BankId = destBank.Id, DestinationBankId = sourceBank.Id, TransId = transid, UserId = destAccount.AccId, DestinationId = sourceAccount.AccId, Amount = amount, On = DateTime.Now, Type = TransactionType.Credit, Balance = destAccount.Balance });
-            
-            json = JsonConvert.SerializeObject(destAccount.TransactionHistory);
-            File.AppendAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\DestTransaction.json", json);
+
+            json = JsonConvert.SerializeObject(DataStore.Banks);
+            File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+
             return true;
         }
     }
