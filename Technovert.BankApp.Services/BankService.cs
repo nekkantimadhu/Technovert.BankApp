@@ -16,8 +16,60 @@ namespace Technovert.BankApp.Services
 
         public bool AddBank(string name)
         {
+            string json;
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            {
+                json = reader.ReadToEnd();
+                reader.Close();
+                var list = JsonConvert.DeserializeObject<List<Bank>>(json);
+                foreach (var ba in list)
+                {
+                    if (ba.BankName == name)
+                    {
+                        return false;
+                    }
+                }
+            }
+            /*if (DataStore.Banks.Any(m => m.BankName == name))
+            {
+                //throw new DuplicateBankNameException();
+                return false;
+            }*/
+            Bank bank = new Bank
+            {
+                Id = this.GenerateBankId(name),
+                BankName = name,
+                CreatedOn = DateTime.Now
 
-            if (DataStore.Banks.Any(m => m.BankName == name))
+            };
+
+            /*var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var directory = Path.GetDirectoryName(location);
+            var path = Path.Combine(directory, "../Bank.json");*/
+            DataStore.Banks.Add(bank);
+            if (!(File.Exists(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json")))
+            {
+                json = JsonConvert.SerializeObject(DataStore.Banks);
+
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+            }
+            else
+            {
+                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+                {
+                    json = reader.ReadToEnd();
+                    reader.Close();
+                    var list = JsonConvert.DeserializeObject<List<Bank>>(json);
+                    list.Add(bank);
+                    json = JsonConvert.SerializeObject(list);
+                    File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+
+                }
+            }
+
+            return true;
+
+            /*if (DataStore.Banks.Any(m => m.BankName == name))
             {
                 //throw new DuplicateBankNameException();
                 return false;
@@ -32,36 +84,88 @@ namespace Technovert.BankApp.Services
 
 
             DataStore.Banks.Add(bank);
-            string json = JsonConvert.SerializeObject(DataStore.Banks);
-
-            var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            //string json = JsonConvert.SerializeObject(DataStore.Banks);
+            *//*var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var directory = Path.GetDirectoryName(location);
-            var path = Path.Combine(directory, "../Bank.json");
-
-           // String path = System.IO.Directory.GetCurrentDirectory() + "/Bank.json";
-
-            File.WriteAllText(path, json);//return
-            if (File.Exists(path))
+            var path = Path.Combine(directory, "../Bank.json");*//*
+            // String path = System.IO.Directory.GetCurrentDirectory() + "/Bank.json";
+            *//* File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json" , json);//return
+             if (File.Exists(path))
+             {
+                 var list = JsonConvert.DeserializeObject<List<Bank>>(json);
+                 using (StreamReader sr = new StreamReader(path))
+                 {
+                     int i = 0;
+                     while (i < list.Count)
+                     {
+                         Console.WriteLine(list[i].Id);
+                         i++;
+                     }
+                 }
+             }*//*
+            string json;
+            if (!(File.Exists(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json")))
             {
-                var list = JsonConvert.DeserializeObject<List<Bank>>(json);
-
-                using (StreamReader sr = new StreamReader(path))
+                json = JsonConvert.SerializeObject(DataStore.Banks);
+                //File.Create(@"C:\Users\DELL\Downloads\Technovert.BankApplication\Technovert.BankApp.Services\Bank.json").Close();
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+            }
+            else
+            {
+                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
                 {
-                    int i = 0;
-                    while (i < list.Count)
-                    {
-                        Console.WriteLine(list[i].Id);
-                        i++;
-                    }
+                    json = reader.ReadToEnd();
+                    reader.Close();
+                    var list = JsonConvert.DeserializeObject<List<Bank>>(json);
+                    list.Add(bank);
+                    json = JsonConvert.SerializeObject(list);
+                    File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
 
                 }
-
             }
-            return true;
+            return true;*/
         }
         public Account CreateAccount(string BankName, string name, string Password, string mobile, string gender)
         {
-            Bank bank = DataStore.Banks.Single(m => m.BankName == BankName);
+
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            {
+                string json = reader.ReadToEnd();
+                reader.Close();
+                var list = JsonConvert.DeserializeObject<List<Bank>>(json);
+                Bank bank = null;
+                Account account = null;
+                foreach (var ba in list)
+                {
+                    if (ba.BankName == BankName)
+                    {
+                        bank = ba;
+                        if (ba.AccLists.Any(m => (m.AccName == name)))
+                        {
+                            throw new DuplicateUserNameException();
+                        }
+                    }
+                }
+                /*Bank bank = DataStore.Banks.Single(m => m.BankName == BankName);
+                if (bank.AccLists.Any(m => m.AccName == name))
+                {
+                    throw new DuplicateUserNameException();
+                }*/
+                if (bank == null) throw new NullValueException("bank");
+                string id = this.GenerateUserId(name);
+                bank.AccLists.Add(new Account { AccId = id, AccName = name, Balance = 0, Password = Password, Mobile = mobile, UpdatedOn = DateTime.Now, Gender = gender, CreatedBy = name, CreatedOn = DateTime.Now, CIF = GenerateCIF() });
+
+
+                account = bank.AccLists.Single(m => m.AccId == id);
+                string transid = "TXN" + bank.Id + account.AccId + DateTime.Now;
+                account.TransactionHistory.Add(new Transaction { TransId = transid, UserId = id, Amount = 0, On = DateTime.Now, Type = TransactionType.Create, Balance = 0 });
+                json = JsonConvert.SerializeObject(list);
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+
+
+                return account;
+            }
+            /*Bank bank = DataStore.Banks.Single(m => m.BankName == BankName);
             if (bank.AccLists.Any(m => m.AccName == name))
             {
                 throw new DuplicateUserNameException();
@@ -69,25 +173,54 @@ namespace Technovert.BankApp.Services
             string id = this.GenerateUserId(name);
             bank.AccLists.Add(new Account { AccId = id, AccName = name, Balance = 0, Password = Password, Mobile = mobile, UpdatedOn = DateTime.Now, Gender = gender, CreatedBy = name, CreatedOn = DateTime.Now, CIF = GenerateCIF() });
 
-            var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            *//*var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var directory = Path.GetDirectoryName(location);
-            var path = Path.Combine(directory, "../Bank.json");
+            var path = Path.Combine(directory, "../Bank.json");*//*
 
-            string json = JsonConvert.SerializeObject(DataStore.Banks);
-            File.WriteAllText(path, json);
-
+            
             Account account = bank.AccLists.Single(m => m.AccId == id);
             string transid = "TXN" + bank.Id + account.AccId + DateTime.Now;
             account.TransactionHistory.Add(new Transaction { TransId = transid, UserId = id, Amount = 0, On = DateTime.Now, Type = TransactionType.Create, Balance = 0 });
             
-            json = JsonConvert.SerializeObject(DataStore.Banks);
+            string json = JsonConvert.SerializeObject(DataStore.Banks);
             File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
-            return account;
+            return account;*/
         }
 
         public BankStaff CreateAccountBankStaff(string BankName, string name, string Password, string mobile)
         {
-            Bank bank = DataStore.Banks.Single(m => m.BankName == BankName);
+
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            {
+                string json = reader.ReadToEnd();
+                reader.Close();
+                var list = JsonConvert.DeserializeObject<List<Bank>>(json);
+                Bank bank = null;
+                BankStaff baStaff = null;
+                foreach (var ba in list)
+                {
+                    if (ba.BankName == BankName)
+                    {
+                        bank = ba;
+                        if (ba.bankStaff.Any(m => (m.StaffName == name)))
+                        {
+                            throw new DuplicateUserNameException();
+                        }
+                    }
+                }
+                if (bank == null) throw new NullValueException("bank");
+                string id = this.GenerateUserId(name);
+                bank.bankStaff.Add(new BankStaff { StaffId = id, StaffName = name, password = Password, Mobile = mobile });
+                baStaff = bank.bankStaff.Single(m => m.StaffId == id);
+
+                json = JsonConvert.SerializeObject(list);
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+
+                return baStaff;
+
+            }
+
+            /*Bank bank = DataStore.Banks.Single(m => m.BankName == BankName);
             if (bank.bankStaff.Any(m => m.StaffName == name))
             {
                 throw new DuplicateUserNameException();
@@ -96,14 +229,15 @@ namespace Technovert.BankApp.Services
             bank.bankStaff.Add(new BankStaff { StaffId = id, StaffName = name, password = Password, Mobile = mobile });
             BankStaff bankStaff = bank.bankStaff.Single(m => m.StaffId == id);
 
-            var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            *//*var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var directory = Path.GetDirectoryName(location);
-            var path = Path.Combine(directory, "../Bank.json");
+            var path = Path.Combine(directory, "../Bank.json");*//*
 
-            string json = JsonConvert.SerializeObject(DataStore.Banks);
-            File.WriteAllText(path, json);
-            return bankStaff;
+                string json = JsonConvert.SerializeObject(DataStore.Banks);
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+                return bankStaff;*/
         }
+
         private string GenerateBankId(string BankName)
         {
             return $"{BankName.Substring(0, 3)}{DateTime.Now.Day}{DateTime.Now.Month}{DateTime.Now.Year}";
