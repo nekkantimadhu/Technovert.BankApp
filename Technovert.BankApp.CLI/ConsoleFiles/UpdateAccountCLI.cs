@@ -38,13 +38,15 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                     }
                     else if (option == 2)
                     {
-                        string mobile = Console.ReadLine();
-                        account.Mobile = mobile;
-                        validationService.UpdateMobile(mobile, BankName, AccId);
+                        string password = Console.ReadLine();
+                        account.Password = password;
+                        validationService.UpdatePassword(password, BankName, AccId);
                     }
                     else
                     {
-                        account.Gender = Console.ReadLine();
+                        string gender = Console.ReadLine();
+                        account.Gender = gender;
+                        validationService.UpdateGender(gender, BankName, AccId);
                     }
                 }
                 catch (AccountNotAvailableException e)

@@ -212,7 +212,7 @@ namespace Technovert.BankApp.Services
             }
 
         }
-        public void UpdatePassword(string Mobile, string BankName, string AccId)
+        public void UpdatePassword(string password, string BankName, string AccId)
         {
             try
             {
@@ -226,7 +226,36 @@ namespace Technovert.BankApp.Services
                         if (ba.BankName == BankName)
                         {
                             Account ac = ba.AccLists.SingleOrDefault(m => m.AccId == AccId);
-                            ac.Password = Mobile;
+                            ac.Password = password;
+                        }
+                    }
+                    saveJson(list);
+                    /* json = JsonConvert.SerializeObject(list);
+                     File.WriteAllText(@"C:\Users\DELL\Downloads\Technovert.BankApplication\Technovert.BankApp.Services\Bank.json", json);*/
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Update Error : " + ex.Message.ToString());
+            }
+
+        }
+        public void UpdateGender(string Gender, string BankName, string AccId)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+                {
+                    string json = reader.ReadToEnd();
+                    reader.Close();
+                    var list = JsonConvert.DeserializeObject<List<Bank>>(json);
+                    foreach (var ba in list)
+                    {
+                        if (ba.BankName == BankName)
+                        {
+                            Account ac = ba.AccLists.SingleOrDefault(m => m.AccId == AccId);
+                            ac.Gender = Gender;
                         }
                     }
                     saveJson(list);

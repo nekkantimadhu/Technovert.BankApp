@@ -62,13 +62,12 @@ namespace Technovert.BankApp.Services
                     var list = JsonConvert.DeserializeObject<List<Bank>>(json);
                     list.Add(bank);
                     json = JsonConvert.SerializeObject(list);
-                    File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+                    File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
 
                 }
             }
 
             return true;
-
             /*if (DataStore.Banks.Any(m => m.BankName == name))
             {
                 //throw new DuplicateBankNameException();
