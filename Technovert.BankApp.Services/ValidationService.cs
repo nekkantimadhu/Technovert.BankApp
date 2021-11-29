@@ -15,7 +15,7 @@ namespace Technovert.BankApp.Services
     {
         public Bank BankAvailability(string BankName)
         {
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
@@ -37,8 +37,7 @@ namespace Technovert.BankApp.Services
                     throw new BankNotAvailableException();
                 }
                 return bank;
-                /* json = JsonConvert.SerializeObject(list);
-                 File.WriteAllText(@"C:\Users\DELL\Downloads\Technovert.BankApplication\Technovert.BankApp.Services\Bank.json", json);*/
+                
             }
             /*
                         if (!(DataStore.Banks.Any(m => m.BankName == name)))
@@ -51,7 +50,7 @@ namespace Technovert.BankApp.Services
         }
         public Account AccountValidity(string BankName, string AccId, string password)
         {
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
@@ -72,8 +71,7 @@ namespace Technovert.BankApp.Services
                 saveJson(list);
                 if (account == null) throw new AccountNotAvailableException();
                 return account;
-                /* json = JsonConvert.SerializeObject(list);
-                 File.WriteAllText(@"C:\Users\DELL\Downloads\Technovert.BankApplication\Technovert.BankApp.Services\Bank.json", json);*/
+                
             }
 
             /*Bank bank = DataStore.Banks.Single(m => m.BankName == BankName);
@@ -87,19 +85,19 @@ namespace Technovert.BankApp.Services
         }
         public Account UpdateorDeleteAccountValidity(string BankName, string AccId)
         {
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
                 var list = JsonConvert.DeserializeObject<List<Bank>>(json);
                 Account account = null;
-                foreach (var ba in list)
+                foreach (var bankvar in list)
                 {
-                    if (ba.BankName == BankName)
+                    if (bankvar.BankName == BankName)
                     {
-                        if (ba.AccLists.Any(m => (m.AccId == AccId)))
+                        if (bankvar.AccLists.Any(m => (m.AccId == AccId)))
                         {
-                            account = ba.AccLists.Single(m => (m.AccId == AccId));
+                            account = bankvar.AccLists.Single(m => (m.AccId == AccId));
                             break;
                         }
 
@@ -120,19 +118,19 @@ namespace Technovert.BankApp.Services
         }
         public Account DepositAccountValidity(string BankName, string AccId, string cif)
         {
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
                 var list = JsonConvert.DeserializeObject<List<Bank>>(json);
                 Account account = null;
-                foreach (var ba in list)
+                foreach (var bankvar in list)
                 {
-                    if (ba.BankName == BankName)
+                    if (bankvar.BankName == BankName)
                     {
-                        if (ba.AccLists.Any(m => (m.AccId == AccId) && (m.CIF == cif)))
+                        if (bankvar.AccLists.Any(m => (m.AccId == AccId) && (m.CIF == cif)))
                         {
-                            account = ba.AccLists.Single(m => (m.AccId == AccId) && (m.CIF == cif));
+                            account = bankvar.AccLists.Single(m => (m.AccId == AccId) && (m.CIF == cif));
                             break;
                         }
 
@@ -153,19 +151,19 @@ namespace Technovert.BankApp.Services
         }
         public Account DesAccountValidity(string BankName, string AccId)
         {
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
                 var list = JsonConvert.DeserializeObject<List<Bank>>(json);
                 Account account = null;
-                foreach (var ba in list)
+                foreach (var bankvar in list)
                 {
-                    if (ba.BankName == BankName)
+                    if (bankvar.BankName == BankName)
                     {
-                        if (ba.AccLists.Any(m => (m.AccId == AccId)))
+                        if (bankvar.AccLists.Any(m => (m.AccId == AccId)))
                         {
-                            account = ba.AccLists.Single(m => (m.AccId == AccId));
+                            account = bankvar.AccLists.Single(m => (m.AccId == AccId));
                             break;
                         }
 
@@ -187,22 +185,21 @@ namespace Technovert.BankApp.Services
         {
             try
             {
-                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
                 {
                     string json = reader.ReadToEnd();
                     reader.Close();
                     var list = JsonConvert.DeserializeObject<List<Bank>>(json);
-                    foreach (var ba in list)
+                    foreach (var bankvar in list)
                     {
-                        if (ba.BankName == BankName)
+                        if (bankvar.BankName == BankName)
                         {
-                            Account ac = ba.AccLists.SingleOrDefault(m => m.AccId == AccId);
+                            Account ac = bankvar.AccLists.SingleOrDefault(m => m.AccId == AccId);
                             ac.Mobile = Mobile;
                         }
                     }
                     saveJson(list);
-                    /* json = JsonConvert.SerializeObject(list);
-                     File.WriteAllText(@"C:\Users\DELL\Downloads\Technovert.BankApplication\Technovert.BankApp.Services\Bank.json", json);*/
+                    
                 }
             }
             catch (Exception ex)
@@ -216,22 +213,21 @@ namespace Technovert.BankApp.Services
         {
             try
             {
-                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
                 {
                     string json = reader.ReadToEnd();
                     reader.Close();
                     var list = JsonConvert.DeserializeObject<List<Bank>>(json);
-                    foreach (var ba in list)
+                    foreach (var bankvar in list)
                     {
-                        if (ba.BankName == BankName)
+                        if (bankvar.BankName == BankName)
                         {
-                            Account ac = ba.AccLists.SingleOrDefault(m => m.AccId == AccId);
-                            ac.Password = password;
+                            Account account = bankvar.AccLists.SingleOrDefault(m => m.AccId == AccId);
+                            account.Password = password;
                         }
                     }
                     saveJson(list);
-                    /* json = JsonConvert.SerializeObject(list);
-                     File.WriteAllText(@"C:\Users\DELL\Downloads\Technovert.BankApplication\Technovert.BankApp.Services\Bank.json", json);*/
+                    
                 }
             }
             catch (Exception ex)
@@ -245,22 +241,21 @@ namespace Technovert.BankApp.Services
         {
             try
             {
-                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
                 {
                     string json = reader.ReadToEnd();
                     reader.Close();
                     var list = JsonConvert.DeserializeObject<List<Bank>>(json);
-                    foreach (var ba in list)
+                    foreach (var bankvariable in list)
                     {
-                        if (ba.BankName == BankName)
+                        if (bankvariable.BankName == BankName)
                         {
-                            Account ac = ba.AccLists.SingleOrDefault(m => m.AccId == AccId);
-                            ac.Gender = Gender;
+                            Account account = bankvariable.AccLists.SingleOrDefault(m => m.AccId == AccId);
+                            account.Gender = Gender;
                         }
                     }
                     saveJson(list);
-                    /* json = JsonConvert.SerializeObject(list);
-                     File.WriteAllText(@"C:\Users\DELL\Downloads\Technovert.BankApplication\Technovert.BankApp.Services\Bank.json", json);*/
+                    
                 }
             }
             catch (Exception ex)
@@ -274,7 +269,7 @@ namespace Technovert.BankApp.Services
         public void saveJson(List<Bank> list)
         {
             string json = JsonConvert.SerializeObject(list);
-            File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+            File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json", json);
         }
     }
 }

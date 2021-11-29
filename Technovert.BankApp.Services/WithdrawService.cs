@@ -22,7 +22,7 @@ namespace Technovert.BankApp.Services
                 throw new AccountClosedException("Your Account Is Closed");
                 /*return "Account Doesnot exist or closed"*/
             }
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
@@ -52,7 +52,7 @@ namespace Technovert.BankApp.Services
                 acc.TransactionHistory.Add(new Transaction { BankId = bank.Id, TransId = transid, UserId = acc.AccId, Amount = amt, On = DateTime.Now, Type = TransactionType.Withdraw, Balance = acc.Balance });
 
                 json = JsonConvert.SerializeObject(list);
-                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json", json);
             }
             return true;
             /*StatusService status = new StatusService();

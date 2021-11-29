@@ -38,7 +38,7 @@ namespace Technovert.BankApp.Services
             {
                 throw new Exception("Available amount is " + sourceAccount.Balance);
             }
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
@@ -71,7 +71,7 @@ namespace Technovert.BankApp.Services
                 }
 
                 json = JsonConvert.SerializeObject(list);
-                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json", json);
             }
 
             return true;

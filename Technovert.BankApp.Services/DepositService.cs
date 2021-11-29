@@ -20,7 +20,7 @@ namespace Technovert.BankApp.Services
             {
                 throw new AccountClosedException("Your Account Is Closed");
             }
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
@@ -49,7 +49,7 @@ namespace Technovert.BankApp.Services
                 var path = Path.Combine(directory, "../Bank.json");*/
 
                 json = JsonConvert.SerializeObject(list);
-                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json", json);
             }
             /*string json = JsonConvert.SerializeObject(DataStore.Banks);
             File.WriteAllText(@"C:\Users\DELL\Downloads\Technovert.BankApplication\Technovert.BankApp.Services\Bank.json", json);*/

@@ -47,22 +47,22 @@ namespace Technovert.BankApp.Services
             var directory = Path.GetDirectoryName(location);
             var path = Path.Combine(directory, "../Bank.json");*/
             DataStore.Banks.Add(bank);
-            if (!(File.Exists(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json")))
+            if (!(File.Exists(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json")))
             {
                 json = JsonConvert.SerializeObject(DataStore.Banks);
 
-                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json", json);
             }
             else
             {
-                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+                using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
                 {
                     json = reader.ReadToEnd();
                     reader.Close();
                     var list = JsonConvert.DeserializeObject<List<Bank>>(json);
                     list.Add(bank);
                     json = JsonConvert.SerializeObject(list);
-                    File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+                    File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json", json);
 
                 }
             }
@@ -127,7 +127,7 @@ namespace Technovert.BankApp.Services
         public Account CreateAccount(string BankName, string name, string Password, string mobile, string gender)
         {
 
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
@@ -159,7 +159,7 @@ namespace Technovert.BankApp.Services
                 string transid = "TXN" + bank.Id + account.AccId + DateTime.Now;
                 account.TransactionHistory.Add(new Transaction { TransId = transid, UserId = id, Amount = 0, On = DateTime.Now, Type = TransactionType.Create, Balance = 0 });
                 json = JsonConvert.SerializeObject(list);
-                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json", json);
 
 
                 return account;
@@ -189,7 +189,7 @@ namespace Technovert.BankApp.Services
         public BankStaff CreateAccountBankStaff(string BankName, string name, string Password, string mobile)
         {
 
-            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+            using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
             {
                 string json = reader.ReadToEnd();
                 reader.Close();
@@ -213,7 +213,7 @@ namespace Technovert.BankApp.Services
                 baStaff = bank.bankStaff.Single(m => m.StaffId == id);
 
                 json = JsonConvert.SerializeObject(list);
-                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json", json);
+                File.WriteAllText(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json", json);
 
                 return baStaff;
 

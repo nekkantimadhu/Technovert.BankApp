@@ -5,6 +5,10 @@ using Technovert.BankApp.Services;
 using Technovert.BankApp.Models.Exceptions;
 using Technovert.BankApp.Models;
 using System.Linq;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace Technovert.BankApp.CLI.ConsoleFiles
 {
@@ -30,9 +34,49 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                 Console.WriteLine("Enter Transaction Id : ");
                 TransId = inputsValidation.UserInputString();
 
+                try
+                {
+                    using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
+                    {
+                        string json = reader.ReadToEnd();
+                        reader.Close();
+                        var list = JsonConvert.DeserializeObject<List<Bank>>(json);
+                        Transaction transaction = null;
+                        foreach (Bank b in list)
+                        {
+                            if (b.BankName == BankName)
+                            {
+                                Account ac = b.AccLists.Single(m => m.AccId == Id);
+                                if (ac.TransactionHistory.Any(m => m.TransId == TransId))
+                                {
+                                    transaction = ac.TransactionHistory.Single(m => m.TransId == TransId);
+                                    foreach(Bank ba in list)
+                                    {
+                                        if(ba.Id == transaction.DestinationBankId)
+                                        {
+                                            if (ba.AccLists.Any(m => m.AccId == transaction.DestinationId))
+                                            {
+                                                Account destinationaccount = ba.AccLists.Single(m => m.AccId == transaction.DestinationId);
+                                                destinationaccount.Balance -= transaction.Amount;
+                                                ac.Balance += transaction.Amount;
+                                                ac.TransactionHistory.Add(new Transaction { BankId = ba.Id, DestinationBankId = transaction.DestinationBankId, TransId = transaction.TransId, UserId = ac.AccId, DestinationId = destinationaccount.AccId, Amount = transaction.Amount, On = DateTime.Now, Type = TransactionType.Revert, Balance = ac.Balance });
+                                                destinationaccount.TransactionHistory.Add(new Transaction { BankId = transaction.DestinationBankId, DestinationBankId = ba.Id, TransId = transaction.TransId, UserId = destinationaccount.AccId, DestinationId = ac.AccId, Amount = transaction.Amount, On = DateTime.Now, Type = TransactionType.Revert, Balance = destinationaccount.Balance });
+                                            }
+                                        }
+                                    }
+                                       
+                                        
+                                }
+
+                                }
+                            }
+                        }
+                                    
+                                
 
 
-                if (bank.AccLists.Any(m => m.AccId == Id))
+
+                        if (bank.AccLists.Any(m => m.AccId == Id))
                 {
                     Account account = bank.AccLists.Single(m => m.AccId == Id);
                     if (account.TransactionHistory.Any(m => m.TransId == TransId))

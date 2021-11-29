@@ -30,7 +30,7 @@ namespace Technovert.BankApp.CLI
                     case UserType.AccountHolder:
                         Console.WriteLine("Select bank name from available banks");
 
-                        using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\Bank.json"))
+                        using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
                         {
                             string json = reader.ReadToEnd();
                             reader.Close();
