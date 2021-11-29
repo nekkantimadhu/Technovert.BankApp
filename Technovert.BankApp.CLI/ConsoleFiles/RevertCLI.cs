@@ -14,7 +14,7 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
 {
     public class RevertCLI
     {
-        public bool Revert( string BankName)
+        public bool Revert(string BankName)
         {
 
             ValidationService validationService = new ValidationService();
@@ -34,7 +34,7 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                 Console.WriteLine("Enter Transaction Id : ");
                 TransId = inputsValidation.UserInputString();
 
-                try
+              /*  try
                 {
                     using (StreamReader reader = new StreamReader(@"D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\Bank.json"))
                     {
@@ -50,9 +50,9 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                                 if (ac.TransactionHistory.Any(m => m.TransId == TransId))
                                 {
                                     transaction = ac.TransactionHistory.Single(m => m.TransId == TransId);
-                                    foreach(Bank ba in list)
+                                    foreach (Bank ba in list)
                                     {
-                                        if(ba.Id == transaction.DestinationBankId)
+                                        if (ba.Id == transaction.DestinationBankId)
                                         {
                                             if (ba.AccLists.Any(m => m.AccId == transaction.DestinationId))
                                             {
@@ -64,40 +64,46 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                                             }
                                         }
                                     }
-                                       
-                                        
-                                }
+
 
                                 }
+
                             }
                         }
-                                    
-                                
+                    }
+
+    */
 
 
 
-                        if (bank.AccLists.Any(m => m.AccId == Id))
-                {
-                    Account account = bank.AccLists.Single(m => m.AccId == Id);
-                    if (account.TransactionHistory.Any(m => m.TransId == TransId))
+                    if (bank.AccLists.Any(m => m.AccId == Id))
                     {
-                        Transaction transaction = account.TransactionHistory.Single(m => m.TransId == TransId);
-                        if (DataStore.Banks.Any(m => m.Id == transaction.DestinationBankId))
+                        Account account = bank.AccLists.Single(m => m.AccId == Id);
+                        if (account.TransactionHistory.Any(m => m.TransId == TransId))
                         {
-                            Bank destinationBank = DataStore.Banks.Single(m => m.Id == transaction.DestinationBankId);
-                            if (bank.AccLists.Any(m => m.AccId == transaction.DestinationId))
+                            Transaction transaction = account.TransactionHistory.Single(m => m.TransId == TransId);
+                            if (DataStore.Banks.Any(m => m.Id == transaction.DestinationBankId))
                             {
-                                Account destinationaccount = bank.AccLists.Single(m => m.AccId == transaction.DestinationId);
-                                destinationaccount.Balance -= transaction.Amount;
-                                account.Balance += transaction.Amount;
-                                account.TransactionHistory.Add(new Transaction { BankId = bank.Id, DestinationBankId = destinationBank.Id, TransId = transaction.TransId, UserId = account.AccId, DestinationId = destinationaccount.AccId, Amount = transaction.Amount, On = DateTime.Now, Type = TransactionType.Revert, Balance = account.Balance });
-                                destinationaccount.TransactionHistory.Add(new Transaction { BankId = destinationBank.Id, DestinationBankId = bank.Id, TransId = transaction.TransId, UserId = destinationaccount.AccId, DestinationId = account.AccId, Amount = transaction.Amount, On = DateTime.Now, Type = TransactionType.Revert, Balance = destinationaccount.Balance });
+                                Bank destinationBank = DataStore.Banks.Single(m => m.Id == transaction.DestinationBankId);
+                                if (bank.AccLists.Any(m => m.AccId == transaction.DestinationId))
+                                {
+                                    Account destinationaccount = bank.AccLists.Single(m => m.AccId == transaction.DestinationId);
+                                    destinationaccount.Balance -= transaction.Amount;
+                                    account.Balance += transaction.Amount;
+                                    account.TransactionHistory.Add(new Transaction { BankId = bank.Id, DestinationBankId = destinationBank.Id, TransId = transaction.TransId, UserId = account.AccId, DestinationId = destinationaccount.AccId, Amount = transaction.Amount, On = DateTime.Now, Type = TransactionType.Revert, Balance = account.Balance });
+                                    destinationaccount.TransactionHistory.Add(new Transaction { BankId = destinationBank.Id, DestinationBankId = bank.Id, TransId = transaction.TransId, UserId = destinationaccount.AccId, DestinationId = account.AccId, Amount = transaction.Amount, On = DateTime.Now, Type = TransactionType.Revert, Balance = destinationaccount.Balance });
 
+                                }
+                                else
+                                {
+                                    return false;
+                                }
                             }
                             else
                             {
                                 return false;
                             }
+
                         }
                         else
                         {
@@ -105,27 +111,22 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
                         }
 
                     }
+
                     else
                     {
                         return false;
                     }
+                    return true;
 
                 }
-
-                else
+                catch (BankNotAvailableException e)
                 {
+                    Console.WriteLine(e.Message);
                     return false;
                 }
-                return true;
 
-            }
-            catch (BankNotAvailableException e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
-            }
 
+         }
             
-        }
     }
 }

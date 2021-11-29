@@ -1,0 +1,4 @@
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\obj\Debug\netcoreapp3.1\Technovert.BankApp.Data.csprojAssemblyReference.cache
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\obj\Debug\netcoreapp3.1\Technovert.BankApp.Data.csproj.CoreCompileInputs.cache
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\obj\Debug\netcoreapp3.1\Technovert.BankApp.Data.AssemblyInfoInputs.cache
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Data\obj\Debug\netcoreapp3.1\Technovert.BankApp.Data.AssemblyInfo.cs

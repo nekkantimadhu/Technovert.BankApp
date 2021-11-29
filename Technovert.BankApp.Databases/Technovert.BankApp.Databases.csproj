@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{10F724B5-15C4-414F-BD11-C59CD899A329}</ProjectGuid>
+    <ProjectGuid>{948115E3-4B1F-4368-A613-04B68BEB805E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Technovert.BankApp.DataBase</RootNamespace>
-    <AssemblyName>Technovert.BankApp.DataBase</AssemblyName>
+    <RootNamespace>Technovert.BankApp.Databases</RootNamespace>
+    <AssemblyName>Technovert.BankApp.Databases</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

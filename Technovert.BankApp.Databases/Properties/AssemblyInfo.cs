@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Technovert.BankApp.DataBase")]
+[assembly: AssemblyTitle("Technovert.BankApp.Databases")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Technovert.BankApp.DataBase")]
+[assembly: AssemblyProduct("Technovert.BankApp.Databases")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("10f724b5-15c4-414f-bd11-c59cd899a329")]
+[assembly: Guid("948115e3-4b1f-4368-a613-04b68beb805e")]
 
 // Version information for an assembly consists of the following four values:
 //
