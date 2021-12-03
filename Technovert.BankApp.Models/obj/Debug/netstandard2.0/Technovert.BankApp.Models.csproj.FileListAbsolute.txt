@@ -2,7 +2,6 @@ D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Models\bin\Debug\netstandard2.
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Models\bin\Debug\netstandard2.0\Technovert.BankApp.Models.dll
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Models\bin\Debug\netstandard2.0\Technovert.BankApp.Models.pdb
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Models\obj\Debug\netstandard2.0\Technovert.BankApp.Models.csprojAssemblyReference.cache
-D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Models\obj\Debug\netstandard2.0\Technovert.BankApp.Models.csproj.CoreCompileInputs.cache
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Models\obj\Debug\netstandard2.0\Technovert.BankApp.Models.AssemblyInfoInputs.cache
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Models\obj\Debug\netstandard2.0\Technovert.BankApp.Models.AssemblyInfo.cs
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Models\obj\Debug\netstandard2.0\Technovert.BankApp.Models.dll
