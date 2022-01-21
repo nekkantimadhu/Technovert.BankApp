@@ -36,3 +36,7 @@ D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\bin\Debug\netcoreapp3.1\ru
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\bin\Debug\netcoreapp3.1\Technovert.BankApp.BankDataBase.exe
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\bin\Debug\netcoreapp3.1\Technovert.BankApp.BankDataBase.pdb
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\bin\Debug\netcoreapp3.1\Technovert.BankApp.BankDataBase.exe.config
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.CLI\obj\Debug\netcoreapp3.1\Technovert.BankApp.CLI.csproj.CoreCompileInputs.cache

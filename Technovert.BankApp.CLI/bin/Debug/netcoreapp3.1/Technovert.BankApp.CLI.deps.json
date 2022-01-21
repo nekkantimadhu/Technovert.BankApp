@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "Technovert.BankApp.CLI/1.0.0": {
         "dependencies": {
+          "MySql.Data": "8.0.27",
           "Technovert.BankApp.Services": "1.0.0"
         },
         "runtime": {
@@ -228,6 +229,11 @@
           }
         }
       },
+      "Technovert.BankApp.BankDataBase/1.0.0": {
+        "runtime": {
+          "Technovert.BankApp.BankDataBase.exe": {}
+        }
+      },
       "Technovert.BankApp.Models/1.0.0": {
         "dependencies": {
           "MySql.Data": "8.0.27"
@@ -240,6 +246,7 @@
         "dependencies": {
           "MySql.Data": "8.0.27",
           "Newtonsoft.Json": "13.0.1",
+          "Technovert.BankApp.BankDataBase": "1.0.0",
           "Technovert.BankApp.Models": "1.0.0"
         },
         "runtime": {
@@ -393,6 +400,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "Technovert.BankApp.BankDataBase/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Technovert.BankApp.Models/1.0.0": {
       "type": "project",

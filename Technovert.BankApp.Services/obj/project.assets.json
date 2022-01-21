@@ -245,6 +245,15 @@
           }
         }
       },
+      "Technovert.BankApp.BankDataBase/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Technovert.BankApp.BankDataBase.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Technovert.BankApp.BankDataBase.dll": {}
+        }
+      },
       "Technovert.BankApp.Models/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -933,6 +942,11 @@
         "version.txt"
       ]
     },
+    "Technovert.BankApp.BankDataBase/1.0.0": {
+      "type": "project",
+      "path": "../Technovert.BankApp.BankDataBase/Technovert.BankApp.BankDataBase.csproj",
+      "msbuildProject": "../Technovert.BankApp.BankDataBase/Technovert.BankApp.BankDataBase.csproj"
+    },
     "Technovert.BankApp.Models/1.0.0": {
       "type": "project",
       "path": "../Technovert.BankApp.Models/Technovert.BankApp.Models.csproj",
@@ -944,6 +958,7 @@
       "MySql.Data >= 8.0.27",
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 13.0.1",
+      "Technovert.BankApp.BankDataBase >= 1.0.0",
       "Technovert.BankApp.Models >= 1.0.0"
     ]
   },
@@ -973,6 +988,9 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
+            "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.BankDataBase\\Technovert.BankApp.BankDataBase.csproj": {
+              "projectPath": "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.BankDataBase\\Technovert.BankApp.BankDataBase.csproj"
+            },
             "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.Models\\Technovert.BankApp.Models.csproj": {
               "projectPath": "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.Models\\Technovert.BankApp.Models.csproj"
             }

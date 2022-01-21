@@ -4,6 +4,7 @@ using System.Text;
 using Technovert.BankApp.Models;
 using Technovert.BankApp.Models.Exceptions;
 using Technovert.BankApp.Services;
+using Technovert.BankApp.BankDataBase;
 
 namespace Technovert.BankApp.CLI.ConsoleFiles
 {
@@ -11,6 +12,7 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
     {
         public void UpdateAcc(string BankName)
         {
+            SQLCommands sQLCommands = new SQLCommands();
             ValidationService validationService = new ValidationService();
             DepositService depositAmount = new DepositService();
             InputsValidation inputsValidation = new InputsValidation();
@@ -19,34 +21,35 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
 
             try
             {
-                Bank b = validationService.BankAvailability(BankName);
+                validationService.BankAvailability(BankName);
                 inputsValidation.EnterAccNum("your");
                 AccId = inputsValidation.UserInputString();
                 AccId = inputsValidation.CommonValidation(AccId, "AccId");
 
                 try
                 {
-                    Account account = validationService.UpdateorDeleteAccountValidity(BankName, AccId);
+                    validationService.UpdateorDeleteAccountValidity(BankName, AccId);
                     Console.WriteLine("Choose option to update 1.Mobile\n 2.Password\n 3.Gender");
                     int option = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("Enter updated value");
                     if (option == 1)
                     {
                         string mobile = Console.ReadLine();
-                        account.Mobile = mobile;
-                        validationService.UpdateMobile(mobile, BankName, AccId);
+                        sQLCommands.UpdateAccountParameters(AccId, mobile, "Mobile");
+                        //account.Mobile = mobile;
+                        //validationService.UpdateMobile(mobile, BankName, AccId);
                     }
                     else if (option == 2)
                     {
                         string password = Console.ReadLine();
-                        account.Password = password;
-                        validationService.UpdatePassword(password, BankName, AccId);
+                        //account.Password = password;
+                        sQLCommands.UpdateAccountParameters(AccId, password, "mobile");
                     }
                     else
                     {
                         string gender = Console.ReadLine();
-                        account.Gender = gender;
-                        validationService.UpdateGender(gender, BankName, AccId);
+                        sQLCommands.UpdateAccountParameters(AccId, gender, "Gender");
+                        //account.Gender = gender;
                     }
                 }
                 catch (AccountNotAvailableException e)
@@ -59,7 +62,6 @@ namespace Technovert.BankApp.CLI.ConsoleFiles
             {
                 System.Console.WriteLine(e.Message);
             }
-
         }
     }
 }

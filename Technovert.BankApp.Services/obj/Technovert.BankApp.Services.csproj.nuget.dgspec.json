@@ -4,6 +4,17 @@
     "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.Services\\Technovert.BankApp.Services.csproj": {}
   },
   "projects": {
+    "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.BankDataBase\\Technovert.BankApp.BankDataBase.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.BankDataBase\\Technovert.BankApp.BankDataBase.csproj",
+        "projectName": "Technovert.BankApp.BankDataBase",
+        "projectPath": "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.BankDataBase\\Technovert.BankApp.BankDataBase.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.Models\\Technovert.BankApp.Models.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -86,6 +97,9 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
+              "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.BankDataBase\\Technovert.BankApp.BankDataBase.csproj": {
+                "projectPath": "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.BankDataBase\\Technovert.BankApp.BankDataBase.csproj"
+              },
               "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.Models\\Technovert.BankApp.Models.csproj": {
                 "projectPath": "D:\\tech\\Technovert.BankApp.CLI\\Technovert.BankApp.Models\\Technovert.BankApp.Models.csproj"
               }

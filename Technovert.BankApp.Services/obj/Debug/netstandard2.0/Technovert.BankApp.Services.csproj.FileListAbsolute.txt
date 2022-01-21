@@ -9,3 +9,7 @@ D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\bin\Debug\netstandard
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.csproj.CopyComplete
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.dll
 D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.pdb
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\bin\Debug\netstandard2.0\Technovert.BankApp.BankDataBase.exe
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\bin\Debug\netstandard2.0\Technovert.BankApp.BankDataBase.pdb
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\bin\Debug\netstandard2.0\Technovert.BankApp.BankDataBase.exe.config
+D:\tech\Technovert.BankApp.CLI\Technovert.BankApp.Services\obj\Debug\netstandard2.0\Technovert.BankApp.Services.csproj.CoreCompileInputs.cache

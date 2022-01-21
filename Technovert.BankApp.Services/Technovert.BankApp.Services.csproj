@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Technovert.BankApp.BankDataBase\Technovert.BankApp.BankDataBase.csproj" />
     <ProjectReference Include="..\Technovert.BankApp.Models\Technovert.BankApp.Models.csproj" />
   </ItemGroup>
 
